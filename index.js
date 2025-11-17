@@ -1,11 +1,17 @@
 import http from 'http';
 import fs from 'fs';
-import dirname from 'path';
+import path from 'path';
 
 const log = console.log;
 
 const pages = fs.readdirSync(import.meta.dirname + '/pages');
-log(pages)
+
+const routes = pages.reduce((routesObject, pageFileName) => {
+  const pageRoute = '/' + path.parse(pageFileName).name;
+  routesObject[pageRoute] = pageFileName;
+  return routesObject;
+}, { '/': 'index.html' });
+
 
 
 const server = http.createServer((req, res) => {
