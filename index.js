@@ -4,8 +4,8 @@ import dirname from 'path';
 
 const log = console.log;
 
-const allFiles = fs.readdirSync(import.meta.dirname + '/pages');
-log(allFiles)
+const pages = fs.readdirSync(import.meta.dirname + '/pages');
+log(pages)
 
 
 const server = http.createServer((req, res) => {
